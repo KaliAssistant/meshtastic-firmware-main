@@ -219,7 +219,7 @@ int32_t ButtonThread::runOnce()
             if (screen) {
                 screen->startAlert("Shutting down...");
             }
-            playBeep();
+            //playBeep(); //HACK: Dont play any sounds!
             break;
         }
 
@@ -227,7 +227,7 @@ int32_t ButtonThread::runOnce()
         // may wake the board immediatedly.
         case BUTTON_EVENT_LONG_RELEASED: {
             LOG_INFO("Shutdown from long press");
-            playShutdownMelody();
+            //playShutdownMelody(); //HACK: Dont play any sounds!
             delay(3000);
             power->shutdown();
             break;

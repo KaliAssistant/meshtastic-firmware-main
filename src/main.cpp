@@ -664,7 +664,7 @@ void setup()
                   meshtastic_Config_DeviceConfig_Role_TAK_TRACKER, meshtastic_Config_DeviceConfig_Role_SENSOR))
         LOG_DEBUG("Tracker/Sensor: Skip start melody");
     else
-        playStartMelody();
+        {} //playStartMelody(); // HACK: Bypass buzzer playStartMelody bootup 
 
     // fixed screen override?
     if (config.display.oled != meshtastic_Config_DisplayConfig_OledType_OLED_AUTO)

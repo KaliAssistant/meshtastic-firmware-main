@@ -263,7 +263,7 @@ class AnalogBatteryLevel : public HasBatteryLevel
 
 #ifndef BATTERY_SENSE_SAMPLES
 #define BATTERY_SENSE_SAMPLES                                                                                                    \
-    15 // Set the number of samples, it has an effect of increasing sensitivity in complex electromagnetic environment.
+    1500 // Set the number of samples, it has an effect of increasing sensitivity in complex electromagnetic environment.
 #endif
 
 #ifdef BATTERY_PIN
