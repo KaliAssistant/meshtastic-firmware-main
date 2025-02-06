@@ -48,6 +48,7 @@ extern "C" {
 #define VTFT_LEDA 15
 // #define ST7789_BL (32+6)
 #define TFT_BACKLIGHT_ON LOW
+#define BRIGHTNESS_DEFAULT 255 // set max tft backlight 
 #define ST7789_SPI_HOST SPI1_HOST
 // #define TFT_BL (32+6)
 #define SPI_FREQUENCY 40000000
