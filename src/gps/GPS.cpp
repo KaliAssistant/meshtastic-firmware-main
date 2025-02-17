@@ -1741,7 +1741,19 @@ void GPS::toggleGpsMode()
     if (config.position.gps_mode == meshtastic_Config_PositionConfig_GpsMode_ENABLED) {
         config.position.gps_mode = meshtastic_Config_PositionConfig_GpsMode_DISABLED;
         LOG_INFO("User toggled GpsMode. Now DISABLED");
-        //playGPSDisableBeep();
+
+
+        #ifdef _VARIANT_TRACKER_T1000_E_ //if the device is t1000e, no display can show gps status
+        //bool ledStat = 0;
+        for (int i=0; i<10; i++)
+        {
+            NRF_P0->OUT ^= (1 << 24);
+            delay(50);
+        }
+        
+       // playGPSDisableBeep();
+        #endif
+
 #ifdef GNSS_AIROHA
         if (powerState == GPS_ACTIVE) {
             LOG_DEBUG("User power Off GPS");
@@ -1752,7 +1764,16 @@ void GPS::toggleGpsMode()
     } else if (config.position.gps_mode == meshtastic_Config_PositionConfig_GpsMode_DISABLED) {
         config.position.gps_mode = meshtastic_Config_PositionConfig_GpsMode_ENABLED;
         LOG_INFO("User toggled GpsMode. Now ENABLED");
+
+        #ifdef _VARIANT_TRACKER_T1000_E_ //if the device is t1000e, no display can show gps status
+        for (int i=0; i<5; i++)
+        {
+            NRF_P0->OUT ^= (1 << 24);
+            delay(100);
+        }
         //playGPSEnableBeep();
+        #endif
+
         enable();
     }
 }
